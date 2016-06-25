@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Places Quiz</string>
-    <string name="app.title">Which famous cities and countries have you been to?</string>
-    <string name="app.description">Start this amazing trivia quiz and try to guess all the places in the picture. Let’s travel the world! </string>
+    <string name="app.description">Start this amazing trivia quiz and try to guess all the places in the picture. Let’s travel the world!</string>
+    <string name="app.btn.start">START</string>
+    <string name="title_activity_quiz">Places Quiz</string>
 </resources>

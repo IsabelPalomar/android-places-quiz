@@ -3,16 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="android.example.com.placesquiz.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@drawable/places" />
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:text="@string/app_name"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/activity_xbig_text_size"
+            android:textColor="@color/colorWhite"
+            android:gravity="center" />
+
+        <TextView
+            android:text="@string/app.description"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:padding="@dimen/activity_medium_padding"
+            android:textColor="@color/colorWhite"
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:text="@string/app.btn.start"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_start_button_height"
+                android:layout_margin="@dimen/activity_big_margin"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorWhite"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:onClick="startQuiz"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
 
