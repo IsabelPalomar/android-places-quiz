@@ -3,4 +3,39 @@
     <string name="app.description">Start this amazing trivia quiz and try to guess all the places in the picture. Let’s travel the world!</string>
     <string name="app.btn.start">START</string>
     <string name="title_activity_quiz">Places Quiz</string>
+    <array name="question1_options">
+        <item>London</item>
+        <item>Amsterdam</item>
+        <item>Galicia</item>
+    </array>
+    <array name="question2_options">
+        <item>Netherlands</item>
+        <item>Berlin</item>
+        <item>Amsterdam</item>
+    </array>
+    <array name="question4_options">
+        <item>Cancún</item>
+        <item>Hawaii</item>
+        <item>Havana</item>
+    </array>
+    <array name="question5_options">
+        <item>Guatemala</item>
+        <item>Machu Pichu</item>
+        <item>Teotihuacan</item>
+    </array>
+    <array name="question7_options">
+        <item>Sydney</item>
+        <item>Pittsburg</item>
+        <item>Dublin</item>
+    </array>
+    <array name="question8_options">
+        <item>Birmingham</item>
+        <item>Venice</item>
+        <item>Stockholm</item>
+    </array>
+    <array name="question9_options">
+        <item>Teotihuacan</item>
+        <item>Tajin</item>
+        <item>Chichen Itza</item>
+    </array>
 </resources>
