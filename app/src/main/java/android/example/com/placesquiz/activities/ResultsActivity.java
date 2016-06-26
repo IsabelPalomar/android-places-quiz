@@ -1,5 +1,6 @@
-package android.example.com.placesquiz;
+package android.example.com.placesquiz.activities;
 
+import android.example.com.placesquiz.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

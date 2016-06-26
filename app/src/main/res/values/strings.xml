@@ -2,7 +2,13 @@
     <string name="app_name">Places Quiz</string>
     <string name="app.description">Start this amazing trivia quiz and try to guess all the places in the picture. Let’s travel the world!</string>
     <string name="app.btn.start">START</string>
+    <string name="app.title.quit">Close Quiz</string>
+    <string name="app.message.quit">Are you sure you want to close this quiz?</string>
+    <string name="app.message.yes">Yes</string>
+    <string name="app.message.no">No</string>
     <string name="title_activity_quiz">Places Quiz</string>
+
+    <!-- Array values for questions -->
     <array name="question1_options">
         <item>London</item>
         <item>Amsterdam</item>
