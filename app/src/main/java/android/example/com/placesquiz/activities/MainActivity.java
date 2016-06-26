@@ -14,6 +14,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Starts Quiz activity
+     * @param view
+     */
+
     public void startQuiz(View view) {
         Intent i = new Intent(MainActivity.this, QuizActivity.class);
         startActivity(i);

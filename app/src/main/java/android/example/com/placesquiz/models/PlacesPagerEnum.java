@@ -3,7 +3,7 @@ package android.example.com.placesquiz.models;
 import android.example.com.placesquiz.R;
 import android.example.com.placesquiz.utils.Constants;
 
-public enum CustomPagerEnum {
+public enum PlacesPagerEnum {
 
     QUESTION1(Constants.RADIOBUTTON_CODE, R.layout.content_quiz_radiobutton, R.drawable.london, R.array.question1_options),
     QUESTION2(Constants.CHECKBOX_CODE, R.layout.content_quiz_checkbox, R.drawable.amsterdam, R.array.question2_options),
@@ -21,7 +21,7 @@ public enum CustomPagerEnum {
     private int mImageResId;
     private int mQuestionOptions;
 
-    CustomPagerEnum(String type, int layoutResId, int imageResId, int questionOptions) {
+    PlacesPagerEnum(String type, int layoutResId, int imageResId, int questionOptions) {
         mType = type;
         mLayoutResId = layoutResId;
         mImageResId = imageResId;

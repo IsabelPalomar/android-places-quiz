@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.example.com.placesquiz.R;
-import android.example.com.placesquiz.models.CustomPagerEnum;
+import android.example.com.placesquiz.models.PlacesPagerEnum;
 import android.example.com.placesquiz.utils.Constants;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -50,7 +50,13 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-    //Ask the user if they want to quit the quiz
+    /**
+     * When the onKeyDown is pressed, the application displays an alert dialog
+     * that ask the users if they want to quit the quiz
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
@@ -62,7 +68,7 @@ public class QuizActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //Stop the activity
+                            //Stop the Quiz activity
                             QuizActivity.this.finish();
                         }
 
@@ -78,20 +84,35 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Save the user answer in the answers array an change the page
+     * @param answer
+     * @param position
+     */
+
     public void saveAnswerAndMoveNext(String answer, int position) {
         answers[position] = answer;
         viewPager.setCurrentItem(position + 1);
     }
 
+    /**
+     * Creates an intent to start the Results activity and sends the user answers
+     * @param view
+     */
     public void submitResults(View view) {
         Intent i = new Intent(QuizActivity.this, ResultsActivity.class);
-        for (String a: answers) {
-            if(a != null)
-                System.out.println(a.toString());
-        }
+        i.putExtra("answers", answers);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }
 
+    /**
+     * This adapter uses the elements stored in PlacesPagerEnum
+     * to populate pages inside of the ViewPager, the adapter has the logic to create
+     * the behaviour and save the user answer when the user clicks the FloatingActionButton
+     */
     public class CustomPagerAdapter extends PagerAdapter {
 
         private Context mContext;
@@ -106,26 +127,26 @@ public class QuizActivity extends AppCompatActivity {
             Resources r = getResources();
             String[] optionsArray = null;
 
-            //Inflates the layout with the resource id stored in customPagerEnum
-            CustomPagerEnum customPagerEnum = CustomPagerEnum.values()[position];
+            //Inflates the layout with the resource id stored in placesPagerEnum
+            PlacesPagerEnum placesPagerEnum = PlacesPagerEnum.values()[position];
             LayoutInflater inflater = LayoutInflater.from(mContext);
-            final ViewGroup layout = (ViewGroup) inflater.inflate(customPagerEnum.getLayoutResId(), collection, false);
+            final ViewGroup layout = (ViewGroup) inflater.inflate(placesPagerEnum.getLayoutResId(), collection, false);
 
             //Set the image
-            if(customPagerEnum.getImageResId() != 0){
+            if(placesPagerEnum.getImageResId() != 0){
                 ImageView imageView = (ImageView) layout.findViewById(R.id.main_image_view);
-                imageView.setImageResource(customPagerEnum.getImageResId());
+                imageView.setImageResource(placesPagerEnum.getImageResId());
             }
 
             //Set the options for checkBox and RadioButton
-            if(customPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)
-                    || customPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
-                optionsArray = r.getStringArray(customPagerEnum.getQuestionOptions());
+            if(placesPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)
+                    || placesPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
+                optionsArray = r.getStringArray(placesPagerEnum.getQuestionOptions());
             }
 
             //Behaviour for each type of View
             FloatingActionButton fab = (FloatingActionButton) layout.findViewById(R.id.fab);
-            if(customPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)){
+            if(placesPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)){
                 RadioButton rbOne = (RadioButton) layout.findViewById(R.id.option_one);
                 RadioButton rbTwo = (RadioButton) layout.findViewById(R.id.option_two);
                 RadioButton rbThree = (RadioButton) layout.findViewById(R.id.option_three);
@@ -153,7 +174,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
             }
-            else if(customPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
+            else if(placesPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
 
                 final CheckBox cbOne = (CheckBox) layout.findViewById(R.id.option_one_cb);
                 final CheckBox cbTwo = (CheckBox) layout.findViewById(R.id.option_two_cb);
@@ -190,7 +211,7 @@ public class QuizActivity extends AppCompatActivity {
                 });
 
             }
-            else if(customPagerEnum.getType().equals(Constants.EDITTEXT_CODE)){
+            else if(placesPagerEnum.getType().equals(Constants.EDITTEXT_CODE)){
 
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -221,7 +242,7 @@ public class QuizActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return CustomPagerEnum.values().length;
+            return PlacesPagerEnum.values().length;
         }
 
         @Override
