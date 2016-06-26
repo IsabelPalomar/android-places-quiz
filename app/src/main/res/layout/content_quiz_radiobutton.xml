@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
+   <!-- <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
@@ -18,29 +18,29 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/activity_xbig_margin"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/main_image_view"
             android:layout_width="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:layout_height="0dp"
             android:src="@drawable/places_background"
             android:scaleType="centerCrop"/>
 
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
+        <RadioGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="2"
-            android:layout_margin="@dimen/activity_vertical_margin">
+            android:layout_weight="1"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:id="@+id/radio_button_group" >
             <RadioButton android:id="@+id/option_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -53,6 +53,16 @@
         </RadioGroup>
 
     </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_done_white"
+        android:onClick="onRadioButtonClicked"/>
 
 
 </android.support.design.widget.CoordinatorLayout>
