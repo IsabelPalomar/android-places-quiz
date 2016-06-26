@@ -1,6 +1,7 @@
 package android.example.com.placesquiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.example.com.placesquiz.utils.Constants;
 import android.os.Bundle;
@@ -10,10 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
 public class QuizActivity extends AppCompatActivity {
+
+    String[] answers = new String[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,11 @@ public class QuizActivity extends AppCompatActivity {
         });*/
     }
 
+    public void submitResults(View view) {
+        Intent i = new Intent(QuizActivity.this, ResultsActivity.class);
+        startActivity(i);
+    }
+
     public class CustomPagerAdapter extends PagerAdapter {
 
         private Context mContext;
@@ -56,12 +66,14 @@ public class QuizActivity extends AppCompatActivity {
             ViewGroup layout = (ViewGroup) inflater.inflate(customPagerEnum.getLayoutResId(), collection, false);
 
             //Set the image
-            ImageView imageView = (ImageView) layout.findViewById(R.id.main_image_view);
-            imageView.setImageResource(customPagerEnum.getImageResId());
+            if(customPagerEnum.getImageResId() != 0){
+                ImageView imageView = (ImageView) layout.findViewById(R.id.main_image_view);
+                imageView.setImageResource(customPagerEnum.getImageResId());
+            }
 
-            //Set the options
-            if(customPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE) ||
-                    customPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
+            //Set the options for checkBox and RadioButton
+            if(customPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)
+                    || customPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
                 optionsArray = r.getStringArray(customPagerEnum.getQuestionOptions());
             }
 
@@ -74,6 +86,17 @@ public class QuizActivity extends AppCompatActivity {
                 rbOne.setText(optionsArray[0]);
                 rbTwo.setText(optionsArray[1]);
                 rbThree.setText(optionsArray[2]);
+            }
+            else if(customPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
+
+                CheckBox cbOne = (CheckBox) layout.findViewById(R.id.option_one);
+                CheckBox cbTwo = (CheckBox) layout.findViewById(R.id.option_two);
+                CheckBox cbThree = (CheckBox) layout.findViewById(R.id.option_three);
+
+                cbOne.setText(optionsArray[0]);
+                cbTwo.setText(optionsArray[1]);
+                cbThree.setText(optionsArray[2]);
+
             }
 
             collection.addView(layout);

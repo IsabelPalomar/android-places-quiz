@@ -20,52 +20,30 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:background="@drawable/travel_background"
+        android:alpha="0.1"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/activity_xbig_margin"
-        android:orientation="vertical">
+        android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/main_image_view"
-            android:layout_width="match_parent"
-            android:layout_weight="3"
-            android:layout_height="0dp"
-            android:src="@drawable/places_background"
-            android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/choice_button_1"
-            android:layout_weight="1"
+        <Button
+            android:text="SUBMIT"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Option1"/>
-
-        <TextView
-            android:id="@+id/choice_button_2"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option2"/>
-
-        <TextView
-            android:id="@+id/choice_button_3"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option3"/>
-
-        <TextView
-            android:id="@+id/choice_button_4"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option4"/>
+            android:layout_height="@dimen/activity_start_button_height"
+            android:layout_margin="@dimen/activity_big_margin"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:onClick="submitResults" />
 
     </LinearLayout>
 

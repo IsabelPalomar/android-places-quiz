@@ -34,38 +34,23 @@
             android:src="@drawable/places_background"
             android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/choice_button_1"
-            android:layout_weight="1"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_text_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Option1"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
 
-        <TextView
-            android:id="@+id/choice_button_2"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option2"/>
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:hint="What is the name of the place?" />
 
-        <TextView
-            android:id="@+id/choice_button_3"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option3"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:id="@+id/choice_button_4"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option4"/>
 
     </LinearLayout>
 

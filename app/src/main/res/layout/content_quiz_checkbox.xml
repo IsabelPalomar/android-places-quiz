@@ -34,38 +34,21 @@
             android:src="@drawable/places_background"
             android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/choice_button_1"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Option1"/>
-
-        <TextView
-            android:id="@+id/choice_button_2"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option2"/>
-
-        <TextView
-            android:id="@+id/choice_button_3"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option3"/>
-
-        <TextView
-            android:id="@+id/choice_button_4"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:text="Option4"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+            <CheckBox android:id="@+id/option_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox android:id="@+id/option_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/option_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </LinearLayout>
 
