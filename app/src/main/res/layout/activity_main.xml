@@ -8,52 +8,52 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:background="@drawable/places_background" />
+        android:background="@drawable/places_background"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin">
+        android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
             android:text="@string/app_name"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_xbig_text_size"
             android:textColor="@color/colorWhite"
-            android:gravity="center" />
+            android:textSize="@dimen/activity_xbig_text_size" />
 
         <TextView
-            android:text="@string/app.description"
-            android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
             android:padding="@dimen/activity_medium_padding"
-            android:textColor="@color/colorWhite"
-            android:gravity="center_horizontal" />
+            android:text="@string/app.description"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/colorWhite" />
 
         <LinearLayout
-            android:layout_weight="1"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <Button
-                android:text="@string/app.btn.start"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_start_button_height"
                 android:layout_margin="@dimen/activity_big_margin"
                 android:background="@color/colorPrimary"
-                android:textColor="@color/colorWhite"
+                android:onClick="startQuiz"
+                android:text="@string/app.btn.start"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:onClick="startQuiz"/>
+                android:textColor="@color/colorWhite" />
         </LinearLayout>
 
     </LinearLayout>

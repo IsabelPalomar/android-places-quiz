@@ -9,30 +9,36 @@ import android.widget.TextView;
 
 public class ResultsActivity extends AppCompatActivity {
 
+    TextView correct;
+    TextView resultsTxt;
+    String results = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        String results = "";
         Resources res = getResources();
         String[] answers = getIntent().getStringArrayExtra("answers");
         int correctAnswers = 0;
 
         //Calculate the correct user answers
         for(int i = 0; i < answers.length; i++) {
-            System.out.println(answers[i]);
-            System.out.println(Constants.correctAnswers[i]);
             if(answers[i].equalsIgnoreCase(Constants.correctAnswers[i])){
                 correctAnswers ++;
+            }else if(i == 1){
+                if(answers[i].contains(Constants.QUESTION2_OPTIONAL)){
+                    correctAnswers ++;
+                }
             }
+
         }
 
         //Set the correct answers value
-        TextView correct = (TextView) findViewById(R.id.correctAnswers);
+        correct = (TextView) findViewById(R.id.correctAnswers);
         correct.setText(String.valueOf(correctAnswers));
 
-        if(correctAnswers > 7){
+        if(correctAnswers > 6){
             results += Constants.CONGRATULATIONS_MSG;
         }
         else if (correctAnswers > 4){
@@ -42,9 +48,10 @@ public class ResultsActivity extends AppCompatActivity {
             results += Constants.KEEP_PRACTICING_MSG;
         }
         results += String.format(res.getString(R.string.app_message_results), correctAnswers, answers.length);
-        TextView resultsTxt = (TextView) findViewById(R.id.resultsText);
-        resultsTxt.setText(results);
-
+        resultsTxt = (TextView) findViewById(R.id.resultsText);
+        if (resultsTxt != null) {
+            resultsTxt.setText(results);
+        }
 
     }
 }

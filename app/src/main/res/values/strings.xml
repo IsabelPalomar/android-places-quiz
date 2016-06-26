@@ -6,8 +6,8 @@
     <string name="app.message.quit">Are you sure you want to close this quiz?</string>
     <string name="app.message.yes">Yes</string>
     <string name="app.message.no">No</string>
-    <string name="app.message.results"> %1$s of %2$s correct answers.</string>
-    <string name="title_activity_quiz">Places Quiz</string>
+    <string name="app.message.results">\n%1$s of %2$s correct answers.</string>
+    <string name="app.message.placeName">What is the name of the place?</string>
 
     <!-- Array values for questions -->
     <array name="question1_options">

@@ -14,37 +14,28 @@
         <ImageView
             android:id="@+id/main_image_view"
             android:layout_width="match_parent"
-            android:layout_weight="2"
             android:layout_height="0dp"
-            android:src="@drawable/places_background"
-            android:scaleType="centerCrop"/>
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/places_background" />
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_text_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:padding="@dimen/activity_default_padding">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/username_text_input_layout"
+            <EditText
+                android:id="@+id/edit_text_place"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:hint="@string/app.message.placeName" />
 
-                <EditText
-                    android:id="@+id/etUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:ems="10"
-                    android:hint="What is the name of the place?" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-
-        </LinearLayout>
-
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
@@ -55,6 +46,4 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_done_white" />
-
-
 </android.support.design.widget.CoordinatorLayout>

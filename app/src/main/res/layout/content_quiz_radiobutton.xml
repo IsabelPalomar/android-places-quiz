@@ -14,32 +14,41 @@
         <ImageView
             android:id="@+id/main_image_view"
             android:layout_width="match_parent"
-            android:layout_weight="2"
             android:layout_height="0dp"
-            android:src="@drawable/places_background"
-            android:scaleType="centerCrop"/>
-
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/places_background" />
 
         <RadioGroup
+            android:id="@+id/radio_button_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:id="@+id/radio_button_group" >
-            <RadioButton android:id="@+id/option_one"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_default_padding"
+            android:paddingLeft="@dimen/activity_default_padding"
+            android:paddingRight="@dimen/activity_default_padding">
+
+            <RadioButton
+                android:id="@+id/option_one"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <RadioButton android:id="@+id/option_two"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/option_two"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <RadioButton android:id="@+id/option_three"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/option_three"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
         </RadioGroup>
 
     </LinearLayout>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -47,7 +56,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_done_white"/>
-
-
+        android:src="@drawable/ic_done_white" />
 </android.support.design.widget.CoordinatorLayout>

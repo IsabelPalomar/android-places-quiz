@@ -14,29 +14,40 @@
         <ImageView
             android:id="@+id/main_image_view"
             android:layout_width="match_parent"
-            android:layout_weight="2"
             android:layout_height="0dp"
-            android:src="@drawable/places_background"
-            android:scaleType="centerCrop"/>
+            android:layout_weight="2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/places_background" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-            <CheckBox android:id="@+id/option_one_cb"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_default_padding"
+            android:paddingRight="@dimen/activity_default_padding"
+            android:paddingTop="@dimen/activity_default_padding">
+
+            <CheckBox
+                android:id="@+id/option_one_cb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <CheckBox android:id="@+id/option_two_cb"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <CheckBox
+                android:id="@+id/option_two_cb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <CheckBox android:id="@+id/option_three_cb"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <CheckBox
+                android:id="@+id/option_three_cb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium" />
         </LinearLayout>
 
     </LinearLayout>
-
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -44,8 +55,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_done_white"
-        android:onClick="onCheckBoxClicked" />
-
-
+        android:src="@drawable/ic_done_white" />
 </android.support.design.widget.CoordinatorLayout>

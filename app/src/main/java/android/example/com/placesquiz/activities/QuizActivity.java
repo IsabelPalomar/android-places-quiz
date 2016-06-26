@@ -53,15 +53,15 @@ public class QuizActivity extends AppCompatActivity {
     /**
      * When the onKeyDown is pressed, the application displays an alert dialog
      * that ask the users if they want to quit the quiz
-     * @param keyCode
-     * @param event
-     * @return
+     * @param keyCode - key pressed
+     * @param event - keyboard event
+     * @return dialog if the key is pressed
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {
             new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setIcon(android.R.drawable.ic_dialog_info)
                     .setTitle(R.string.app_title_quit)
                     .setMessage(R.string.app_message_quit)
                     .setPositiveButton(R.string.app_message_yes, new DialogInterface.OnClickListener() {
@@ -86,8 +86,8 @@ public class QuizActivity extends AppCompatActivity {
 
     /**
      * Save the user answer in the answers array an change the page
-     * @param answer
-     * @param position
+     * @param answer - user answer
+     * @param position - current page position
      */
 
     public void saveAnswerAndMoveNext(String answer, int position) {
@@ -97,7 +97,6 @@ public class QuizActivity extends AppCompatActivity {
 
     /**
      * Creates an intent to start the Results activity and sends the user answers
-     * @param view
      */
     public void submitResults(View view) {
         Intent i = new Intent(QuizActivity.this, ResultsActivity.class);
@@ -146,89 +145,92 @@ public class QuizActivity extends AppCompatActivity {
 
             //Behaviour for each type of View
             FloatingActionButton fab = (FloatingActionButton) layout.findViewById(R.id.fab);
-            if(placesPagerEnum.getType().equals(Constants.RADIOBUTTON_CODE)){
-                RadioButton rbOne = (RadioButton) layout.findViewById(R.id.option_one);
-                RadioButton rbTwo = (RadioButton) layout.findViewById(R.id.option_two);
-                RadioButton rbThree = (RadioButton) layout.findViewById(R.id.option_three);
+            switch (placesPagerEnum.getType()) {
+                case Constants.RADIOBUTTON_CODE:
+                    RadioButton rbOne = (RadioButton) layout.findViewById(R.id.option_one);
+                    RadioButton rbTwo = (RadioButton) layout.findViewById(R.id.option_two);
+                    RadioButton rbThree = (RadioButton) layout.findViewById(R.id.option_three);
 
-                rbOne.setText(optionsArray[0]);
-                rbTwo.setText(optionsArray[1]);
-                rbThree.setText(optionsArray[2]);
-
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        RadioGroup rGroup = (RadioGroup) layout.findViewById(R.id.radio_button_group);
-                        int selectedValueId = rGroup.getCheckedRadioButtonId();
-
-                        if(selectedValueId != -1){
-                            String answer = ((RadioButton)layout.findViewById(rGroup.getCheckedRadioButtonId())).getText().toString();
-                            saveAnswerAndMoveNext(answer, position);
-                        }
-                        else{
-                            Snackbar.make(v, "Select your option...", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                        }
+                    if (optionsArray != null) {
+                        rbOne.setText(optionsArray[0]);
+                        rbTwo.setText(optionsArray[1]);
+                        rbThree.setText(optionsArray[2]);
                     }
-                });
 
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            RadioGroup rGroup = (RadioGroup) layout.findViewById(R.id.radio_button_group);
+                            int selectedValueId = rGroup.getCheckedRadioButtonId();
 
-            }
-            else if(placesPagerEnum.getType().equals(Constants.CHECKBOX_CODE)){
-
-                final CheckBox cbOne = (CheckBox) layout.findViewById(R.id.option_one_cb);
-                final CheckBox cbTwo = (CheckBox) layout.findViewById(R.id.option_two_cb);
-                final CheckBox cbThree = (CheckBox) layout.findViewById(R.id.option_three_cb);
-
-                cbOne.setText(optionsArray[0]);
-                cbTwo.setText(optionsArray[1]);
-                cbThree.setText(optionsArray[2]);
-
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        String answer = "";
-                        if((cbOne).isChecked()){
-                            answer += cbOne.getText().toString();
+                            if (selectedValueId != -1) {
+                                String answer = ((RadioButton) layout.findViewById(rGroup.getCheckedRadioButtonId())).getText().toString();
+                                saveAnswerAndMoveNext(answer, position);
+                            } else {
+                                Snackbar.make(v, "Select your option...", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
                         }
-                        if((cbTwo).isChecked()){
-                            answer += cbTwo.getText().toString();
+                    });
 
-                        }
-                        if((cbThree).isChecked()){
-                            answer += cbThree.getText().toString();
+                    break;
+                case Constants.CHECKBOX_CODE:
 
-                        }
-                        if(!answer.equals(Constants.EMPTY_ANSWER)){
-                            saveAnswerAndMoveNext(answer, position);
-                        }else{
-                            Snackbar.make(v, "Select your option...", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                        }
+                    final CheckBox cbOne = (CheckBox) layout.findViewById(R.id.option_one_cb);
+                    final CheckBox cbTwo = (CheckBox) layout.findViewById(R.id.option_two_cb);
+                    final CheckBox cbThree = (CheckBox) layout.findViewById(R.id.option_three_cb);
 
+                    if (optionsArray != null) {
+                        cbOne.setText(optionsArray[0]);
+                        cbTwo.setText(optionsArray[1]);
+                        cbThree.setText(optionsArray[2]);
                     }
-                });
 
-            }
-            else if(placesPagerEnum.getType().equals(Constants.EDITTEXT_CODE)){
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        EditText editText = (EditText) layout.findViewById(R.id.etUsername);
-                        String answer = editText.getText().toString();
-                        if(!answer.equals(Constants.EMPTY_ANSWER)){
-                            saveAnswerAndMoveNext(answer, position);
+                            String answer = "";
+                            if ((cbOne).isChecked()) {
+                                answer += cbOne.getText().toString();
+                            }
+                            if ((cbTwo).isChecked()) {
+                                answer += cbTwo.getText().toString();
+
+                            }
+                            if ((cbThree).isChecked()) {
+                                answer += cbThree.getText().toString();
+
+                            }
+                            if (!answer.equals(Constants.EMPTY_ANSWER)) {
+                                saveAnswerAndMoveNext(answer, position);
+                            } else {
+                                Snackbar.make(v, "Select your option...", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+
                         }
-                        else{
-                            Snackbar.make(v, "Write your answer...", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                    });
+
+                    break;
+                case Constants.EDITTEXT_CODE:
+
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            EditText editText = (EditText) layout.findViewById(R.id.edit_text_place);
+                            String answer = editText.getText().toString();
+                            if (!answer.equals(Constants.EMPTY_ANSWER)) {
+                                saveAnswerAndMoveNext(answer, position);
+                            } else {
+                                Snackbar.make(v, "Write your answer...", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+                            }
+
                         }
+                    });
 
-                    }
-                });
-
+                    break;
             }
 
             collection.addView(layout);

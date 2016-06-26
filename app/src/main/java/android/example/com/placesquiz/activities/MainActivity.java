@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Starts Quiz activity
-     * @param view
+     * @param view Fab
      */
 
     public void startQuiz(View view) {
